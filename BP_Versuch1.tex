@@ -1,0 +1,293 @@
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} 
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\author{Kim Thuong Ngo}
+
+
+\usepackage[T1]{fontenc} 
+\usepackage{fourier} 
+
+\usepackage{lipsum} 
+
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{tabularx}
+
+\usepackage{sectsty}
+\allsectionsfont{\centering \normalfont\scshape} 
+
+\usepackage{fancyhdr} 
+\pagestyle{fancyplain} 
+\fancyhead{}
+\fancyfoot[L]{} 
+\fancyfoot[C]{} 
+\fancyfoot[R]{\thepage} 
+\renewcommand{\headrulewidth}{0pt} 
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\headheight}{13.6pt}
+
+\numberwithin{equation}{section} 
+\numberwithin{figure}{section} 
+\numberwithin{table}{section}
+
+\setlength\parindent{0pt} 
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} 
+
+\title{	
+\normalfont \normalsize 
+\textsc{Basispraktikum} \\ [25pt] 
+\horrule{0.5pt} \\[0.4cm] 
+\huge Ausarbeitung \\ 
+\horrule{2pt} \\[0.5cm] 
+}
+
+\author{Jörg Gamerdinger und Kim Thuong Ngo} 
+
+\date{\normalsize\today} 
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle 
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+%----------------------------------------------------------------------------------------
+
+\section{Geräteeinführung}
+
+\subsection{Einführung}
+Das Oszilloskop ist ein Gerät, was einen zeitlichen Verlauf einer Spannung oder die Abhängigkeit zweier Spannungsverläufe zueinander darstellen kann. Da die Oszilloskope auf die Einstellung "10X" der Tastköpfe eingestellt sind, muss man darauf achten, dass man die Spannung durch 10 teilt, wenn man die Tastköpfe nicht verwendet. Um sicher zu gehen, dass die Tastköpfe richtig funktionieren, sollte man einen Tastkopfabgleich vornehmen. Es sollte eine saubere Rechtecksspannung dargestellt werden.
+
+Um den dargestellten Graphen des Oszilloskops bestmöglich zu bestimmen, sollte man die Regler: HORIZONTAL POSITION, VERTICAL POSITION, VOLTS/DIV und SEC/DIV verwenden. Sie können die vertikale/ horizontale Ausrichtung und die Skalierung eines DIVs verändern.
+
+\subsection{sinusförmiges Signal}
+
+Messung: siehe Graph 1 
+
+gemessene Frequenz: 1,0007 KHz \\
+
+berechnete Spannung: \\
+
+eine Periode T beträgt 1000 $\mu s$
+
+Formel für Frequenz: $f= \dfrac{1}{T}$ \\
+
+Rechnung: $f = \dfrac{1}{1*10^{-3}} = 1000 Hz = 1 KHz$
+
+\subsection{Auswertung}
+Man erkennt eine kleine Asymmetrie in der Sinuskurve, und zwar sind die Extrempunkte nicht direkt bei $250 \mu s$ und $750 \mu s$. Dieser kleine Fehler könnte vom Funktionsgenerator verursacht worden sein. Dennoch befindet sich der Fehler im Rahmen, sodass wir auf dieselbe Frequenz ($1,0007 KHz = 1 KHz$) kommen.
+
+
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+\section{Tiefpass}
+
+\subsection{Vorbereitung}
+
+Herleitung: \\
+
+$ \dfrac{Û_{Out}}{Û_{In}} = \dfrac{1}{\sqrt{1+(wRC)^{2}}}$ \\
+
+w := Kreisfrequenz der Sinusschwingung \\
+
+$f = \dfrac{w}{2 \pi}$ \\
+
+$w = \dfrac{1}{RC}$ \\
+
+Daraus erschließt sich die Formel für die Grenzfrequenz: \\
+
+$f= \dfrac{w}{2 \pi} \Rightarrow f = \dfrac{1}{2 \pi R C}$ \\
+
+
+Formel zur Berechnung der Grenzfrequenz: $f_{G} = \dfrac{1}{2* \pi * R * C}$ \\
+Widerstand R = $1,5 K\Omega$ = $1500 \Omega$ \\
+Kapazität C = $100 nF$ = $1,0 *10^{-7} F$ \\
+
+Rechnung: $\dfrac{1}{2* \pi * 1500 \Omega *1,0*10^{-7} F} \approx 1061,03 Hz = 1,061 KHz$ \\
+
+Bedeutung: Wenn die Grenzfrequenz erreicht ist, sinkt die Amplitude (Spannung) des Eingangssignals um den Wert $\dfrac{1}{\sqrt{2}}$ und es liegt eine Phasenverschiebung vor. \\
+
+Die Phasenverschiebung tritt auf, da die Spannung die nach dem Kondensator gemessen wird der Eingangsspannung hinterher hängt, weil der Kondensator Zeit braucht, bis dieser geladen ist. \\
+
+Formel: $\varphi = atan(-wRC) = atan(-2 \pi RC)$
+
+\subsection{Versuchsaufbau}
+
+siehe Graph 2A \\
+
+Am Punkt A ist der Funktionsgenerator angeschlossen. Kanal 1 soll ebenfalls an Punkt A angeschlossen werden und den Spannungsverlauf U(A) anzeigen. Kanal 2 soll den Spannungsverlauf U(B) am Punkt B darstellen. Punkt R dient als gemeinsamen Referenz für den Funktionsgenerator, das Oszilloskop und dem Kondensator.
+
+\subsection{Sinusspannung}
+
+Beobachtung: Beide Signale sind sinusförmig. Am Anfang ist das Signal der Eingangsspannung gleich der Ausgangsspannung. Je größer die Frequenz wird, desto kleiner wird die Ausgangsspannung $U(B)$. D.h. das Spannungsverhältnis von Eingangsspannung und Ausgangsspannung muss kleiner werden. Außerdem sind die Kurven auch versetzt voneinander. \\
+
+Messung: siehe Graph 3 \\
+
+Spannungsverhältnis bei 1 KHz: \\
+
+$\dfrac{U_{B}}{U_{A}} = \dfrac{7V}{10V} = 0,7$ \\
+
+Phasenverschiebung: \\
+
+Verschiebung liegt bei $t \approx 120 \mu s$ \\
+
+Umrechnung: $\dfrac{360 ^{\circ}}{1000 \mu s} * 120 \mu s \approx 43,2 ^{\circ}$ \\
+
+Spannungsverhältnis bei 5 KHz: \\
+
+$\dfrac{U_{B}}{U_{A}} = \dfrac{2,5V}{10V} = 0,25$ \\
+
+Phasenverschiebung: \\
+
+Verschiebung liegt bei $t \approx 45 \mu s$ \\
+
+Umrechnung: $\dfrac{360 ^{\circ}}{200 \mu s} * 45 \mu s \approx 81 ^{\circ}$ \\
+
+Unterschiede der Kurve: \\
+
+Die Ausgangsspannung ist bei 5 KHz geringer als bei 1 KHz.
+
+\newpage
+
+\subsection{Rechtecksspannung}
+
+Beobachtung: Die Signale haben diesmal unterschiedliche Kurven. Der Graph vom Eingangssignal ist eine Rechtecksspannung. Der Graph des Ausgangssignals ist anders, da es ein abwechselnder Auflade- und Entladevorgang ist. Diese Vorgänge wechseln mit der Flanke der Rechtecksspannung. Somit liegt auch keine Phasenverschiebung der Kurven vor. Je größer die Frequenz wird, desto kleiner wird die Ausgangsspannung $U(B)$. \\
+
+Messung: siehe Graph 4 \\
+
+Spannungsverhältnis bei 1 KHz: \\
+
+$\dfrac{U_{B}}{U_{A}} = \dfrac{9V}{10V} = 0,9$ \\
+
+Phasenverschiebung: keine vorhanden \\
+
+Spannungsverhältnis bei 5 KHz: \\
+
+$\dfrac{U_{B}}{U_{A}} = \dfrac{4V}{10V} = 0,4$ \\
+
+Phasenverschiebung: keine vorhanden \\
+
+Unterschiede der Kurve: \\
+
+Die Ausgangsspannung ist bei 5 KHz geringer als bei 1 KHz. Außerdem ist bei 1 KHz, der Graph beim Lade- und Entladevorgang ein Kurve. Bei 5 KHz ähnelt der Graph, mehr einem "Zickzack" - Muster, d.h. beim Lade- und Entladevorgang ist der Graph schon fast eine Gerade und sich maximale und minimale Spannung einander angenähert haben.
+
+\newpage
+
+\subsection{Erklärung}
+
+\begin{tabular}{|c|c|c|}
+\hline
+Frequenz & Sinusspannung & Rechtecksspannung \\
+ & Messung (Theorie)&  \\
+\hline
+1 KHz & & \\  
+Spannungsverhältnis & $0,7$ $(0,711)$  & $0,9$ \\
+Phasenverschiebung & $43,2^{\circ}$ $(63,2^{\circ})$ & keine \\
+\hline
+5 KHz & & \\
+Spannungsverhältnis & $0,25$ $(0,2068)$ & $0,4$ \\
+Phasenverschiebung & $81^{\circ}$ $(84^{\circ})$ & keine \\
+\hline
+\end{tabular} \\
+
+\\
+
+\underline{Sinusspannung:}
+
+Die gemessenen und berechneten Werte der Spannungsverhältnisse stimmen mit denen der Theorie gut überein. Dabei ist das Spannungsverhältnis bei der kleineren Frequenz größer als bei der anderen, wie wir es auch beobachtet und vermutet haben. Die Phasenverschiebung bei 1 KHz hingegen, weicht bei uns stark vom Theoriewert ab. Der Grund könnte ungenaues Ablesen der Verschiebung verursacht haben und so zu einem falschen Wert geführt haben. Außerdem ist eine Asymmetrie im Graphen des Ausgangssignals zu erkennen, da dieser über eine Periode nicht ganz symmetrisch verläuft, was ein Fehler vom Funktionsgenerator nicht ausschließt. Ansonsten erkennt man, dass die Phasenverschiebung bei der größeren Frequenz auch größer sein muss. Der Grund dafür ist, das der Kondensator eines Tiefpasses eine gewisse Ladezeit braucht, d.h. je größer die Frequenz wird, desto schneller wechselt die Eingangsspannung zwischen positiv und negativ, sodass es einige Zeit dauert, bis die maximal mögliche Spannung erreicht ist und so die Kurve der Ausgangsspannung nach hinten zeitverzögert wird. \\
+
+\underline{Rechtecksspannung:}
+
+Das Eingangssignal ist eine konstante Rechtecksspanung. Das Ausgangssignal zeigt den Lade- und Entladevorgang. Je höher die Frequenz, desto weniger Zeit hat der Kondensator sich zu laden bzw. sich zu entladen,d.h. die maximale und minimale Spannung liegen nicht mehr so weit auseinander. D.h. das Spannungsverhältnis muss bei größeren Frequenzen auch kleiner werden (0,9 > 0,4). 
+Des weiteren macht die Phasenverschiebung bei einer Rechtecksspannung keinen Sinn, da wir in den Beobachtungen gesehen haben, dass der Lade- und Entladevorgang immer zu einer Flanke der Rechtecksspannung einsetzt. \\
+
+\underline{Fazit:}
+Spannungen mit niedrigen Frequenzen sind kaum abgeschwächt und zeitverzögert. Bei höheren Frequenzen sinkt die Ausgangsspannung und die Phasenverschiebung wird größer.
+
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+\section{Kennlinien}
+
+\subsection{Versuchsaufbau}
+
+\subsection{Vorbereitung}
+
+\subsection{Messung}
+
+Kennlinien: siehe Graphen 5-8 \\
+
+gemessener Widerstand des Multimeters: $R \approx 327 \Omega$ \\
+
+berechneter Widerstand: $R = \dfrac{U}{I} = \dfrac{1V}{0,0029 mA} \approx 344,8 \Omega$ \\
+
+Durchlassspanungen der Dioden bei 6mA: \\
+
+\begin{tabular}{|c|c|c|c|}
+\hline
+& Universaldiode & rote Leuchtdiode & weiße Leuchtdiode \\
+\hline
+gemessene Spannung & 0,8 V & 1,15 V & 2,9 V \\
+\hline
+$U_{D}$ & 0,74 V& 1,09 V & 2,84 V \\
+\hline
+\end{tabular}
+
+\subsection{Erklärung}
+
+\underline{Widerstand:} \\
+
+Der gemessene und berechnete Wert stimmen nicht ganz überein. Der Grund dafür liegt beim  $10 \Omega$-Widerstand, der bei der Rechnung nicht berücksichtigt wird. Da sie aber hintereinander gereiht sind, kann man von einer Reihenschaltung ausgehen, d.h. dass der eigentliche Widerstand $R=327 \Omega +10 \Omega = 227 \Omega$ beträgt, somit liegt der Wert näher an unserem Ergebnis. Des weiteren können Messfehler beim ungenauen Ablesen oder vom Schwanken des Funktionsgenerators verursacht werden. \\
+
+\underline{Dioden:} \\
+
+\begin{tabular}{|c|c|c|c|}
+\hline
+& Universaldiode & rote Leuchtdiode & weiße Leuchtdiode \\
+\hline
+$U_{D}$ bei 6 mA & 0,74 V& 1,09 V & 2,84 V \\
+\hline
+Literaturwerte & & & \\
+$U_{D}$ bei 10mA & 1 V & 1,5 V & 3,5 V \\
+\hline
+\end{tabular} \\
+
+Die berechneten Werte stimmen gut mit den Literaturwerten überein. Außerdem kann man bei dem Graphen auch gut die Kennlinie einer Diode erkennen.
+Bei den Graphen sieht man außerdem keine negativen Strom, weil die Diode den Strom nur in eine Richtung fließen lässt, sodass eine Leuchtdiode aufleuchtet. 
+
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+\section{Graphiken}
+
+Graph 1: Sinusspannung bei $f \approx 1,0007 KHz$ \\
+Graph 2A: Schaltplan für Tiefpass \\
+Graph 2B: Schaltplan zur Messung der Kennlinien \\
+Graph 3: Sinusspannung bei $f \approx 1,0006 KHz$ \\
+Graph 4: Rechtecksspannung bei $f \approx 1,0039 KHZ$ \\
+Graph 5: Kennlinie des Widerstands ($330 \Omega$) \\
+Graph 6: Kennlinie der Universaldiode \\
+Graph 7: Kennlinie der roten Leuchtdiode \\
+Graph 8: Kennlinie der weißen Leuchtdiode \\
+
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+\section{Versuchsprotokoll}
+
+
+\end{document}
