@@ -15,3 +15,4 @@
 \contentsline {subsection}{\numberline {3.4}Erkl\IeC {\"a}rung}{8}
 \contentsline {section}{\numberline {4}Graphiken}{9}
 \contentsline {section}{\numberline {5}Versuchsprotokoll}{10}
+\contentsline {section}{\numberline {6}Korrektur}{11}
