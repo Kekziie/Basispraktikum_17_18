@@ -70,7 +70,35 @@
 
 \begin{tabular}{|c|c|cc|c|ccc|ccc|c|}
 \hline
-Adr. & Befehl &Steuerung & & Bus & Register & & & ALU & & Flags & \\
+Adr. & Befehl &Steuerung & & Bus & Register & & & ALU & & & Flags \\
+\hline
+& & adr. ctrl. & next adr. & func. & adr. A & adr. B & write & in A & in B & funct. f= & load \\
+\hline
+0 & ADDS $R_{0}$ 4 & -  & 1 & - & 0 & 4 & A & - & C & ADDS & - \\
+\hline
+\end{tabular} \\
+
+\begin{tabular}{|cc|cc|cccc|ccc|c|}
+\hline
+Steuerung & & Bus & & Register & & & & ALU & & & Flags \\
+\hline
+MAC & NA & WR & EN & AA & AB & WS & WE & Malu IA & Malu IB & Malus & MCH Flags \\
+\hline
+00 & 00001 & 0 & 0 & 000 & 0100 & 0 & 0 & 0 & 1 & 0101 & 0 \\
+\hline
+\end{tabular} \\
+
+\underline{Erklärung}
+
+Die Konstante $B=4$ wird als 0100 über MRG AB eingegeben. Mit dem Befehl ADDS, wird die Konstante mit dem Inhalt von Register $R_{0}$ und 1 addiert, d.h. folgende Rechnung $0+4+1$ wird ausgeführt. An den LEDs wird 0000 0101 ausgegeben, d.h. das Ergebnis ist 5 und die erwünschte Lösung.
+
+%-----------------------------------------------------------------
+
+\subsection{FF+1}
+
+\begin{tabular}{|c|c|cc|c|ccc|ccc|c|}
+\hline
+Adr. & Befehl &Steuerung & & Bus & Register & & & ALU & & & Flags \\
 \hline
 & & adr. ctrl. & next adr. & func. & adr. A & adr. B & write & in A & in B & funct. f= & load \\
 \hline
@@ -84,37 +112,109 @@ MAC & NA & WR & EN & AA & AB & WS & WE & Malu IA & Malu IB & Malus & MCH Flags \
 \hline
 \end{tabular} \\
 
-\underline{Erklärung}
-
-Die Konstante $B=4$ wird als 0100 über MRG AB eingegeben. Mit dem Befehl ADDS, wird die Konstante mit dem Inhalt von Register $R_{0}$ und 1 addiert, d.h. folgende Rechnung $0+4+1$ wird ausgeführt. An den LEDs wird 0000 0101 ausgegeben, d.h. das Ergebnis ist 5 und die erwünschte Lösung.
-
-%-----------------------------------------------------------------
-
-\subsection{FF+1}
-
 %----------------------------------------------------------------------------------------
 
 \newpage
 
 \section{Mikroprogramme}
 
+\begin{tabular}{|c|c|cc|c|ccc|ccc|c|}
+\hline
+Adr. & Befehl &Steuerung & & Bus & Register & & & ALU & & & Flags \\
+\hline
+& & adr. ctrl. & next adr. & func. & adr. A & adr. B & write & in A & in B & funct. f= & load \\
+\hline
+\end{tabular} \\
+
+\begin{tabular}{|cc|cc|cccc|ccc|c|}
+\hline
+Steuerung & & Bus & & Register & & & & ALU & & & Flags \\
+\hline
+MAC & NA & WR & EN & AA & AB & WS & WE & Malu IA & Malu IB & Malus & MCH Flags \\
+\hline
+\end{tabular} \\
+
 %-----------------------------------------------------------------
 
 \subsection{(A+B)*2}
+
+\begin{tabular}{|c|c|cc|c|ccc|ccc|c|}
+\hline
+Adr. & Befehl &Steuerung & & Bus & Register & & & ALU & & & Flags \\
+\hline
+& & adr. ctrl. & next adr. & func. & adr. A & adr. B & write & in A & in B & funct. f= & load \\
+\hline
+\end{tabular} \\
+
+\begin{tabular}{|cc|cc|cccc|ccc|c|}
+\hline
+Steuerung & & Bus & & Register & & & & ALU & & & Flags \\
+\hline
+MAC & NA & WR & EN & AA & AB & WS & WE & Malu IA & Malu IB & Malus & MCH Flags \\
+\hline
+\end{tabular} \\
 
 %-----------------------------------------------------------------
 
 \subsection{(A-B)/4}
 
+\begin{tabular}{|c|c|cc|c|ccc|ccc|c|}
+\hline
+Adr. & Befehl &Steuerung & & Bus & Register & & & ALU & & & Flags \\
+\hline
+& & adr. ctrl. & next adr. & func. & adr. A & adr. B & write & in A & in B & funct. f= & load \\
+\hline
+\end{tabular} \\
+
+\begin{tabular}{|cc|cc|cccc|ccc|c|}
+\hline
+Steuerung & & Bus & & Register & & & & ALU & & & Flags \\
+\hline
+MAC & NA & WR & EN & AA & AB & WS & WE & Malu IA & Malu IB & Malus & MCH Flags \\
+\hline
+\end{tabular} \\
+
 %-----------------------------------------------------------------
 
 \subsection{(A AND B)}
+
+\begin{tabular}{|c|c|cc|c|ccc|ccc|c|}
+\hline
+Adr. & Befehl &Steuerung & & Bus & Register & & & ALU & & & Flags \\
+\hline
+& & adr. ctrl. & next adr. & func. & adr. A & adr. B & write & in A & in B & funct. f= & load \\
+\hline
+\end{tabular} \\
+
+\begin{tabular}{|cc|cc|cccc|ccc|c|}
+\hline
+Steuerung & & Bus & & Register & & & & ALU & & & Flags \\
+\hline
+MAC & NA & WR & EN & AA & AB & WS & WE & Malu IA & Malu IB & Malus & MCH Flags \\
+\hline
+\end{tabular} \\
 
 %----------------------------------------------------------------------------------------
 
 \newpage
 
 \section{Mikroprogramm zur Kontoführung}
+
+\begin{tabular}{|c|c|cc|c|ccc|ccc|c|}
+\hline
+Adr. & Befehl &Steuerung & & Bus & Register & & & ALU & & & Flags \\
+\hline
+& & adr. ctrl. & next adr. & func. & adr. A & adr. B & write & in A & in B & funct. f= & load \\
+\hline
+\end{tabular} \\
+
+\begin{tabular}{|cc|cc|cccc|ccc|c|}
+\hline
+Steuerung & & Bus & & Register & & & & ALU & & & Flags \\
+\hline
+MAC & NA & WR & EN & AA & AB & WS & WE & Malu IA & Malu IB & Malus & MCH Flags \\
+\hline
+\end{tabular} \\
 
 %----------------------------------------------------------------------------------------
 
