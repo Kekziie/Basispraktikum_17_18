@@ -102,6 +102,8 @@ Adr. & Befehl &Steuerung & & Bus & Register & & & ALU & & & Flags \\
 \hline
 & & adr. ctrl. & next adr. & func. & adr. A & adr. B & write & in A & in B & funct. f= & load \\
 \hline
+0 & ADDS $R_{0}$ FF & - & 0 & - & 0 & FF & - & - & C & ADDS & x  \\
+\hline
 \end{tabular} \\
 
 \begin{tabular}{|cc|cc|cccc|ccc|c|}
@@ -110,7 +112,13 @@ Steuerung & & Bus & & Register & & & & ALU & & & Flags \\
 \hline
 MAC & NA & WR & EN & AA & AB & WS & WE & Malu IA & Malu IB & Malus & MCH Flags \\
 \hline
+00 & 00001 & 0 & 0 & 000 & 1111 & 0 & 0 & 0 & 1 & 0101 & 1\\
+\hline
 \end{tabular} \\
+
+\underline{Erklärung}
+
+Das Register FF wird als B eingelesen. Wie im vorigen Versuch a wird der Befehl ADDS verwendet und so $0 + FF+ 1$ addiert. Die LEDs geben als Ergebnis 0000 0000 an. Die Frage die aufkommt ist, warum es kein Carry Out gibt. Die Tabelle 5.1 zeigt an, dass der Befehl ADDS ein Carry besitzt, dieser aber invertiert ist. D.h. es gibt kein Carry Out bei dieser Rechnung.
 
 %----------------------------------------------------------------------------------------
 
