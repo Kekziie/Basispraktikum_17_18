@@ -1,0 +1,123 @@
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} 
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\author{Kim Thuong Ngo}
+
+
+\usepackage[T1]{fontenc} 
+\usepackage{fourier} 
+
+\usepackage{lipsum} 
+
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{tabularx}
+
+\usepackage{sectsty}
+\allsectionsfont{\centering \normalfont\scshape} 
+
+\usepackage{fancyhdr} 
+\pagestyle{fancyplain} 
+\fancyhead{}
+\fancyfoot[L]{} 
+\fancyfoot[C]{} 
+\fancyfoot[R]{\thepage} 
+\renewcommand{\headrulewidth}{0pt} 
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\headheight}{13.6pt}
+
+\numberwithin{equation}{section} 
+\numberwithin{figure}{section} 
+\numberwithin{table}{section}
+
+\setlength\parindent{0pt} 
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} 
+
+\title{	
+\normalfont \normalsize 
+\textsc{Basispraktikum} \\ [25pt] 
+\horrule{0.5pt} \\[0.4cm] 
+\huge Ausarbeitung \\ 
+\horrule{2pt} \\[0.5cm] 
+}
+
+\author{Jörg Gamerdinger und Kim Thuong Ngo} 
+
+\date{\normalsize\today} 
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle 
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+%----------------------------------------------------------------------------------------
+
+\section{Rechenaufgaben}
+
+%-----------------------------------------------------------------
+
+\subsection{4+1}
+
+\begin{tabular}{|c|c|cc|c|ccc|ccc|c|}
+Adr. & Befehl &Steuerung & & Bus & Register & & & ALU & & Flags & \\
+\hline
+& & adr. ctrl. & next adr. & func. & adr. A & adr. B & write & in A & in B & funct. f= & load \\
+\hline
+\end{tabular}
+
+\underline{Erklärung}
+
+Die Konstante $B=4$ wird als 0100 über MRG AB eingegeben. Mit dem Befehl ADDS, wird die Konstante mit dem Inhalt von Register $R_{0}$ und 1 addiert, d.h. folgende Rechnung $0+4+1$ wird ausgeführt. An den LEDs wird 0000 0101 ausgegeben, d.h. das Ergebnis ist 5 und die erwünschte Lösung.
+
+%-----------------------------------------------------------------
+
+\subsection{FF+1}
+
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+\section{Mikroprogramme}
+
+%-----------------------------------------------------------------
+
+\subsection{(A+B)*2}
+
+%-----------------------------------------------------------------
+
+\subsection{(A-B)/4}
+
+%-----------------------------------------------------------------
+
+\subsection{(A AND B)}
+
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+\section{Mikroprogramm zur Kontoführung}
+
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+\section{Versuchsprotokoll}
+
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+\section{Korrektur}
+
+
+\end{document}
