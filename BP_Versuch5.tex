@@ -69,9 +69,18 @@
 \subsection{4+1}
 
 \begin{tabular}{|c|c|cc|c|ccc|ccc|c|}
+\hline
 Adr. & Befehl &Steuerung & & Bus & Register & & & ALU & & Flags & \\
 \hline
 & & adr. ctrl. & next adr. & func. & adr. A & adr. B & write & in A & in B & funct. f= & load \\
+\hline
+\end{tabular}
+
+\begin{tabular}{|c|cc|cc|cccc|ccc|c|}
+\hline
+Adr. & Steuerung & & Bus & & Register & & & & ALU & & & Flags \\
+\hline
+& MAC & NA & WR & EN & MRG AA & MRG AB & MRG WS & MRG WE & Malu IA & Malu IB & Malus & MCH Flags \\
 \hline
 \end{tabular}
 
