@@ -132,6 +132,14 @@ Adr. & Befehl &Steuerung & & Bus & Register & & & ALU & & & Flags \\
 \hline
 & & adr. ctrl. & next adr. & func. & adr. A & adr. B & write & in A & in B & funct. f= & load \\
 \hline
+0 & LD $R_{4}$ FF & - & 1 & - & 4 & FF & A & - & C & B & - \\
+\hline
+1 & LD $R_{5}$ FE & - & 2 & - & 5 & FE & A & - & C & B & - \\
+\hline
+2 & LD $R_{1}$ ($R_{4}$) & - & 3 & rd & 4 & 1 & B & M & - & A & - \\
+\hline
+3 & LD $R_{2}$ ($R_{5}$) & - & 4 & rd & 5 & 2 & B & M & - & A & - \\
+\hline
 \end{tabular} \\
 
 \begin{tabular}{|cc|cc|cccc|ccc|c|}
@@ -140,7 +148,20 @@ Steuerung & & Bus & & Register & & & & ALU & & & Flags \\
 \hline
 MAC & NA & WR & EN & AA & AB & WS & WE & Malu IA & Malu IB & Malus & MCH Flags \\
 \hline
+00 & 00001 & 0 & 0 & 100 & 1111 & 0 & 1 & 0 & 1 & 1100 & 0  \\
+\hline
+00 & 00010 & 0 & 0 & 101 & 1110 & 0 & 1 & 0 & 1 & 1100 & 0 \\
+\hline
+00 & 00011 & 0 & 1 & 100 & 0001 & 1 & 1 & 1 & 1 & 0001 & 0 \\
+\hline
+00 & 00100 & 0 & 1 & 101 & 0010 & 1 & 1 & 1 & 0 & 0001 & 0 \\
+\hline
 \end{tabular} \\
+
+\underline{Erklärung}
+Die Eingabe FF und FE werden als Adresse für Input-Register in den Registern $R_{4}$ und $R_{5}$ geladen. Mit dem Befehl LD wird auf die ALU die Werte aus F geliefert. Dieser ist am Dateneingang angekoppelt. Die Werte, aus den Memory Adressen FF und FE, werden in den Registern $R_{1}$ und $R_{2}$ geladen. Deshalb muss der Read Modus 0 sein und Bus Enable 1. \\
+
+Die Adressen 0-3 dienen zur Initialisierung der Variablen A und B für die folgenden Teilaufgaben (a)-(c).
 
 %-----------------------------------------------------------------
 
