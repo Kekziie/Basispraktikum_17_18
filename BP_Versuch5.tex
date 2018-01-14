@@ -173,6 +173,14 @@ Adr. & Befehl &Steuerung & & Bus & Register & & & ALU & & & Flags \\
 \hline
 & & adr. ctrl. & next adr. & func. & adr. A & adr. B & write & in A & in B & funct. f= & load \\
 \hline
+4 & ADD $R_{2}$ $R_{1}$ & - & 5 & - & 2 & 1 & B & R & R & ADD & - \\
+\hline
+5 & ADD $R_{1}$ $R_{1}$ & - & 6 & - & 1 & 1 & A & R & R & ADD & - \\
+\hline
+6 & LD $R_{3}$ FF & - & 7 & - & 3 & FF & A & - & C & B & - \\
+\hline
+7 & ST ($R_{3}$) $R_{1}$ & - & 0 & wr & 3 & 1 & - & - & R & B  & - \\
+\hline
 \end{tabular} \\
 
 \begin{tabular}{|cc|cc|cccc|ccc|c|}
@@ -181,7 +189,20 @@ Steuerung & & Bus & & Register & & & & ALU & & & Flags \\
 \hline
 MAC & NA & WR & EN & AA & AB & WS & WE & Malu IA & Malu IB & Malus & MCH Flags \\
 \hline
+00 & 00101 & 0 & 0 & 010 & 0001 & 1 & 1 & 0 & 0 & 0100 & 0 \\
+\hline
+00 & 00110 & 0 & 0 & 001 & 0001 & 0 & 1 & 0 & 0 & 0100 & 0 \\
+\hline
+00 & 00111 & 0 & 0 & 011 & 1111 & 0 & 1 & 0 & 1 & 1100 & 0 \\
+\hline
+00 & 00000 & 1 & 1 & 011 & 0001 & 0 & 0 & 0 & 0 & 1100 & 0 \\
+\hline
 \end{tabular} \\
+
+\underline{Erklärung}
+
+Der Wert aus Register 1 wird mit dem Wert aus Register 2 addiert und das Ergebnis in Register 1 gespeichert ($A_{i+1}=A_{i}+B_{i}$). Somit ist die Summe aus A und B in Register 1 gespeichert. Die Summe soll mit 2 multipliziert werden, d.h. man addiert das Register mit sich selbst und speichert das Ergebnis wieder in Register 1 ($A_{i+2}=A_{i+1}+A_{i+1}$). Die Adresse vom Output FF wird in das Register 3 geladen. Mit dem letzten Befehl, wird das Ergebnis in Register 1 in das Output Register FF gespeichert. \\
+D.h. das Ergebnis steht am Output FF. Nach Adresse 7 wird Adresse 0 angesteuert, das ist der Jump zum Anfang. Es schafft eine Endlosschleife, um das Programm immer durchlaufen lassen zu können.
 
 %-----------------------------------------------------------------
 
