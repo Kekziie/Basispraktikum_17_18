@@ -263,6 +263,16 @@ Adr. & Befehl &Steuerung & & Bus & Register & & & ALU & & & Flags \\
 \hline
 & & adr. ctrl. & next adr. & func. & adr. A & adr. B & write & in A & in B & funct. f= & load \\
 \hline
+4 & COM $R_{2}$ & - & 5 & - & 2 & 2 & A & R & R & NOR & - \\
+\hline
+5 & COM $R_{1}$ & - & 6 & - & 1 & 1 & A & R & R & NOR & - \\
+\hline
+6 & COM $R_{1}$ $R_{2}$ & - & 7 & - & 1 & 2 & A & R & R & NOR & - \\
+\hline
+7 & LD $R_{3}$ FF & - & 8 & - & 3 & FF & A & - & C & B & - \\
+\hline
+8 & ST ($R_{3}$) $R_{1}$ & - & 0 & wr & 3 & 1 & - & - & R & B & - \\
+\hline
 \end{tabular} \\
 
 \begin{tabular}{|cc|cc|cccc|ccc|c|}
@@ -271,7 +281,22 @@ Steuerung & & Bus & & Register & & & & ALU & & & Flags \\
 \hline
 MAC & NA & WR & EN & AA & AB & WS & WE & Malu IA & Malu IB & Malus & MCH Flags \\
 \hline
+00 & 00101 & 0 & 0 & 010 & 0010 & 0 & 1 & 0 & 0 & 0010 & 0 \\
+\hline
+00 & 00110 & 0 & 0 & 001 & 0001 & 0 & 1 & 0 & 0 & 0010 & 0 \\
+\hline
+00 & 00111 & 0 & 0 & 001 & 0010 & 0 & 1 & 0 & 0 & 0010 & 0 \\
+\hline
+00 & 01000 & 0 & 0 & 011 & 1111 & 0 & 1 & 0 & 1 & 1100 & 0 \\
+\hline
+00 & 00000 & 1 & 1 & 011 & 0001 & 0 & 0 & 0 & 0 & 1100 & 0 \\
+\hline
 \end{tabular} \\
+
+\underline{Erklärung}
+
+Die Werte aus den Registern $R_{1}$ und $R_{2}$ müssen beide invertiert werden. Danach wird die Funktion NOR für notA und notB verwendet und das Ergebnis in Register 1 gespeichert. \\
+Die Adresse des Output Register wird in Register 3 geladen und das Ergebnis in Output Register gespeichert.
 
 %----------------------------------------------------------------------------------------
 
