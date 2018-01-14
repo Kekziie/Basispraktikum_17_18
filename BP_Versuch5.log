@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.10.23)  14 JAN 2018 20:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.10.23)  14 JAN 2018 20:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1127,72 +1127,78 @@ Underfull \hbox (badness 10000) in paragraph at lines 145--160
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 161--163
+Overfull \hbox (2.37134pt too wide) in paragraph at lines 163--164
+\T1/futs/m/n/10.95 geladen. Mit dem Be-fehl LD wird auf die ALU die Werte aus F
+ geliefert. Dieser ist am Datenein-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 163--164
 
  []
 
 
-Overfull \hbox (91.80605pt too wide) in paragraph at lines 170--185
+Overfull \hbox (91.80605pt too wide) in paragraph at lines 171--186
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 170--185
+Underfull \hbox (badness 10000) in paragraph at lines 171--186
 
  []
 
 
-Overfull \hbox (70.6051pt too wide) in paragraph at lines 186--201
+Overfull \hbox (70.6051pt too wide) in paragraph at lines 187--202
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 186--201
+Underfull \hbox (badness 10000) in paragraph at lines 187--202
 
  []
 
 [4]
-Overfull \hbox (97.25914pt too wide) in paragraph at lines 211--230
+Overfull \hbox (97.25914pt too wide) in paragraph at lines 212--231
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 211--230
+Underfull \hbox (badness 10000) in paragraph at lines 212--231
 
  []
 
 
-Overfull \hbox (70.6051pt too wide) in paragraph at lines 231--250
+Overfull \hbox (70.6051pt too wide) in paragraph at lines 232--251
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 231--250
+Underfull \hbox (badness 10000) in paragraph at lines 232--251
 
  []
 
 
-Overfull \hbox (93.71136pt too wide) in paragraph at lines 260--277
+Overfull \hbox (93.71136pt too wide) in paragraph at lines 261--278
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 260--277
+Underfull \hbox (badness 10000) in paragraph at lines 261--278
 
  []
 
 
-Overfull \hbox (70.6051pt too wide) in paragraph at lines 278--295
+Overfull \hbox (70.6051pt too wide) in paragraph at lines 279--296
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 278--295
+Underfull \hbox (badness 10000) in paragraph at lines 279--296
 
  []
 
 [5] [6]
-LaTeX Font Info:    Try loading font information for TS1+futs on input line 309
+LaTeX Font Info:    Try loading font information for TS1+futs on input line 310
 .
  (/usr/local/texlive/2017/texmf-dist/tex/latex/fourier/ts1futs.fd
 File: ts1futs.fd 2004/03/26 Fontinst v1.926 font definitions for TS1/futs.
@@ -1204,41 +1210,41 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.317 
+l.318 
       
 ? 
 
-Overfull \hbox (97.25914pt too wide) in paragraph at lines 318--351
+Overfull \hbox (97.25914pt too wide) in paragraph at lines 319--352
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 318--351
+Underfull \hbox (badness 10000) in paragraph at lines 319--352
 
  []
 
 
-Overfull \hbox (70.6051pt too wide) in paragraph at lines 352--385
+Overfull \hbox (70.6051pt too wide) in paragraph at lines 353--386
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 352--385
+Underfull \hbox (badness 10000) in paragraph at lines 353--386
 
  []
 
 [7] [8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 412--414
+Underfull \hbox (badness 10000) in paragraph at lines 413--415
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 422--424
+Underfull \hbox (badness 10000) in paragraph at lines 423--425
 
  []
 
 
-Overfull \hbox (5.06987pt too wide) in paragraph at lines 425--427
+Overfull \hbox (5.06987pt too wide) in paragraph at lines 426--428
 \T1/futs/m/n/10.95 MEMDO (Mem-ory Data Out) an-liegende Wert wird an die einges
 tellte Zieladresse geschrieben.
  []
@@ -1258,7 +1264,7 @@ r-t1.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/public/fourier/fourier
 -ms.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb
 ></usr/local/texlive/2017/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb></usr
 /local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb>
-Output written on BP_Versuch5.pdf (10 pages, 75917 bytes).
+Output written on BP_Versuch5.pdf (10 pages, 76472 bytes).
 PDF statistics:
  55 PDF objects out of 1000 (max. 8388607)
  38 compressed objects within 1 object stream
