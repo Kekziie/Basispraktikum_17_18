@@ -214,6 +214,18 @@ Adr. & Befehl &Steuerung & & Bus & Register & & & ALU & & & Flags \\
 \hline
 & & adr. ctrl. & next adr. & func. & adr. A & adr. B & write & in A & in B & funct. f= & load \\
 \hline
+4 & COM $R_{2}$ & - & 5 & - & 2 & 0 & A & - & C & NOR & - \\
+\hline
+5 & ADDS $R_{1}$ $R_{2}$ & - & 6 & - & 1 & 2 & A & R & R & ADDS & - \\
+\hline
+6 & LSR $R_{1}$ & - & 7 & - & 1 &  0 & A & R & R & LSR & - \\
+\hline
+7 & LSR $R_{1}$ & - & 8 & - & 1 & 0 & A & R & R & LSR & - \\
+\hline
+8 & LD $R_{3}$ FF & - & 9 & - & 3 & FF & A & - & C & B & - \\
+\hline
+9 & ST ($R_{3}$) $R_{1}$ & - & 0 & wr & 3 & 1 & - & - & R & B & - \\
+\hline
 \end{tabular} \\
 
 \begin{tabular}{|cc|cc|cccc|ccc|c|}
@@ -222,7 +234,24 @@ Steuerung & & Bus & & Register & & & & ALU & & & Flags \\
 \hline
 MAC & NA & WR & EN & AA & AB & WS & WE & Malu IA & Malu IB & Malus & MCH Flags \\
 \hline
+00 & 00101 & 0 & 0 & 010 & 0000 & 0 & 1 & 0 & 0 & 0010 & 0 \\
+\hline
+00 & 00110 & 0 & 0 & 001 & 0010 & 0 & 1 & 0 & 0 & 0101 & 0 \\
+\hline
+00 & 00111 & 0 & 0 & 001 & 0000 & 0 & 1 & 0 & 0 & 1000 & 0 \\
+\hline
+00 & 01000 & 0 & 0 & 001 & 0000 & 0 & 1 & 0 & 0 & 1000 & 0 \\
+\hline
+00 & 01001 & 0 & 0 & 011 & 1111 & 0 & 1 & 0 & 1 & 1100 & 0 \\
+\hline
+00 & 00000 & 1 & 1 & 011 & 0001 & 0 & 0 & 0 & 0 & 1100 & 0 \\
+\hline
 \end{tabular} \\
+
+\underline{Erklärung}
+
+Für die Subtraktion muss der Wert B ins Zweierkomplement konvertiert werden. In Adresse 4 wird der Wert aus Register 2 (B) ins Einerkomplement konvertiert. In der nächsten Zeile wird dann folgende Rechnung ausgeführt: $A-B$, weil $A+ notB +1$ gerechnet wird. Um durch 4 zu teilen, benutzen wir zweimal ein Bitshift nach rechts, d.h. es werden zwei Nullen links eingeschoben. \\
+Die Adresse des Output Register wird in Register 3 geladen und das Ergebnis im Output Register gespeichert.
 
 %-----------------------------------------------------------------
 
