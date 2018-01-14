@@ -304,11 +304,48 @@ Die Adresse des Output Register wird in Register 3 geladen und das Ergebnis in O
 
 \section{Mikroprogramm zur Kontoführung}
 
+\underline{Aufgabe}
+\begin{itemize}
+\item Input Register FC: Einzahlung
+\item Input Register FD: Auszahlung
+\item Kontostand am Output Register FF
+\item initialer Kontostand ist 0
+\item bei continue soll Mikroprogramm laufen (1 Mal)
+\item letzter Kontostand als Ausgangslage für nächste Berechnung
+\item Überläufe abfangen (Konto von 0-255)
+\end{itemize} \\
+
 \begin{tabular}{|c|c|cc|c|ccc|ccc|c|}
 \hline
 Adr. & Befehl &Steuerung & & Bus & Register & & & ALU & & & Flags \\
 \hline
 & & adr. ctrl. & next adr. & func. & adr. A & adr. B & write & in A & in B & funct. f= & load \\
+\hline
+0 & LOOP & x & 0/1 & - & - & - & - & - & - & - & - \\
+\hline
+1 & LD $R_{4}$ FC & - & 2 & - & 4 & FC & A & - & C & B & - \\
+\hline
+2 & LD $R_{5}$ FD & - & 3 & - & 5 & FD & A & - & C & B & - \\
+\hline
+3 & LD $R_{1}$ ($R_{4}$) & - & 4 & rd & 4 & 1 & B & M & - & A & - \\
+\hline
+4 & LD $R_{2}$ ($R_{5}$) & - & 5 & rd & 5 & 2 & B & M & - & A & - \\
+\hline
+5 & COM $R_{2}$ & - & 6 & - & 2 & 0 & A & - & C & NOR & - \\
+\hline
+6 & ADD $R_{1}$ $R_{3}$ & x & 8/9 & - & 1 & 3 & B & R & R & ADD & - \\
+\hline
+7 & - & - & - & - & - & - & - & - & - & - & - \\
+\hline
+8 & ADDS $R_{3}$ $R_{2}$ & x & 10/11 & - & 3 & 2 & A & R & R & ADDS & - \\
+\hline
+9 & LD $R_{3}$ FF & - & 8 & - & 3 & FF & A & - & C & B & - \\
+\hline
+10 & LD $R_{7}$ FF & - & 12 & - & 7 & FF & A & - & C & B & - \\
+\hline
+11 & LD $R_{3}$ $R_{0}$ & - & 10 & - & 3 & 0 & A & - & C & B &  -\\
+\hline
+12 & ST ($R_{7}$) $R_{3}$ & - & 0 & wr & 7 & 3 & - & - & R & B & - \\
 \hline
 \end{tabular} \\
 
@@ -318,7 +355,41 @@ Steuerung & & Bus & & Register & & & & ALU & & & Flags \\
 \hline
 MAC & NA & WR & EN & AA & AB & WS & WE & Malu IA & Malu IB & Malus & MCH Flags \\
 \hline
+11 & 00001 & 0 & 0 & 000 & 0000 & 0 & 0 & 0 & 0 & 0000 & 0 \\
+\hline
+00 & 00010 & 0 & 0 & 100 & 1100 & 0 & 1 & 0 & 1 & 1100 & 0 \\
+\hline
+00 & 00011 & 0 & 0 & 101 & 1101 & 0 & 1 & 0 & 1 & 1100 & 0 \\
+\hline
+00 & 00100 & 0 & 1 & 100 & 0001 & 1 & 1 & 1 & 0 & 0001 & 0 \\
+\hline
+00 & 00101 & 0 & 1 & 101 & 0010 & 1 & 1 & 1 & 0 & 0001 & 0 \\
+\hline
+00 & 00110 & 0 & 0 & 010 & 0000 & 0 & 1 & 0 & 1 & 0010 & 0 \\
+\hline
+10 & 01000 & 0 & 0 & 001 & 0011 & 1 & 1 & 0 & 0 & 0100 & 0 \\
+\hline
+- & - & - & - & - & - & - & - & - & - & - & - \\
+\hline
+10 & 01010 & 0 & 0 & 011 & 0010 & 0 & 1 & 0 & 0 & 0101 & 0 \\
+\hline
+00 & 01000 & 0 & 0 & 011 & 1111 & 0 & 1 & 0 & 1 & 1100 & 0 \\
+\hline
+00 & 01100 & 0 & 0 & 111 & 1111 & 0 & 1 & 0 & 1 & 1100 & 0 \\
+\hline
+00 & 01010 & 0 & 0 & 011 & 0000 & 0 & 1 & 0 & 1 & 1100 & 0 \\
+\hline
+00 & 00000 & 1 & 1 & 111 & 0011 & 0 & 0 & 0 & 0 & 1100 & 0 \\
+\hline
 \end{tabular} \\
+
+\underline{Erklärung}
+
+Der erste Befehl verhindert, dass das Programm läuft. Beim Druck des continue-Taster, kann erst das Mikroprogramm starten, da durch das Drücken die Folgeadresse angesteuert wird. In den Adressen 1-4 werden die Input Register FC und FD als Adresse in Register $R_{4}$ und $R_{5}$ geladen und dessen Werte in den Registern $R_{1}$ und $R_{2}$ gespeichert. \\
+Der Wert in $R_{2}$ wird konvertiert, um später die Auszahlung auszuführen. \\
+In der nächsten Zeile ist die Einzahlung realisiert, mit dem ADD Befehl. Das Register 3 dient als Speicher für das Konto. Wenn durch die Addition des Kontos und der Einzahlung ein Überlauf auftritt, dann springt man zur Adresse 9, wo Register 3 mit "vollem" Konto, d.h.mit dem Wert 255 geladen wird. Falls es keinen Überlauf gibt, dann wird ganz normal addiert. \\
+Bei der Auszahlung wird der Befehl ADDS verwendet. Analog zur Einzahlung wird hier der Grenzwert 0 abgefangen. Wenn die Summe ins Negative gehen würde, dann springt man zur Adresse 11 und lädt in das Register 3, den Wert 0. Falls durch die Auszahlung das Konto im positiven Bereich bleibt, dann wird die Rechnung durchgeführt. \\
+Zum Schluss wird die Adresse von Output Register FF an die Adresse der Register 7 geladen und der Wert von $R_{3}$ in $R_{7}$ gespeichert.
 
 %----------------------------------------------------------------------------------------
 
@@ -332,5 +403,26 @@ MAC & NA & WR & EN & AA & AB & WS & WE & Malu IA & Malu IB & Malus & MCH Flags \
 
 \section{Korrektur}
 
+\subsection{Aufgabe 2}
+
+Das Flag Signal $C_{0}$ zeigt das Carry Out an, d.h. wenn ein arithmetischer Überlauf stattfindet. Normalerweise dürfte $C_{0}$ nicht aufleuchten, da die Summe $4+1$ keinen Überlauf hat. Der Grund für das Aufleuchten liegt am Befehl ADDS. Nach Tabelle 5.1 besitzt der Befehl ADDS ein Carry, der aber invertiert. D.h. es leuchtet $C_{0}$ bei diesem Befehl auf, da es keinen Überlauf gibt.
+
+\subsection{Aufgabe 3}
+
+Zeile 1 und 2: \\
+FF und FE werden als Adresse für Input Register in den Registern $R_{4}$ und $R_{5}$ geladen. Mit dem Befehl LD (F=B) wird der ALU die Werte an FF bzw. FE geliefert. \\
+
+Zeile 3 und 4: \\
+Um an den Wert von FF und FE ran zu kommen, muss man darauf achten das der Bus aktiv ist (BUS EN = 1) und nicht beschrieben wird (BUS WR = 0). Dann kann man aus der Adresse des Busses den Wert lesen. Dadurch das Malu IA = 1, kann am Eingang A der ALU der Wert weitergereicht werden, der über die MEMDI (Memory Data In) am Eingang des Multiplexers anliegt. \\
+(Verfahren: Input-Register -> Multiplexer -> über ALU gespeichert ) \\
+Die Werte werden dann in den Registern $R_{1}$ und $R_{2}$ gespeichert.
+
+\subsection{Aufgabe 3a}
+
+Zeile 7: \\
+Die Adresse vom Output FE wird in das Register $R_{3}$ geladen. \\
+
+Zeile 8: \\
+Im letzten Befehl ist der Bus aktiv und wird beschrieben (BUS EN = 1, BUS WR = 1). Der an MEMDO (Memory Data Out) anliegende Wert wird an die eingestellte Zieladresse geschrieben. D.h. das Ergebnis, welcher in Register $R_{1}$ gespeichert ist, wird von der MEMA (Memory Adress) ausgewählt, dann an Register $R_{3}$ geliefert und so am Output FF ausgegeben.
 
 \end{document}
